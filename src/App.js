@@ -1,25 +1,33 @@
-import logo from './logo.svg';
 import './App.css';
+import React, {useEffect} from 'react';
+import {Route, Routes} from "react-router-dom";
+import {connect} from "react-redux";
+import { handleInitialData } from './store/actions/shared';
+import LoginPage from './pages/LoginPage';
+import Dashboard from './pages/DashboardPage';
+import ProtectedRoute from './components/ProtectedRoute';
 
-function App() {
+function App({dispatch, loggedIn}) {
+  useEffect(() => {
+      dispatch(handleInitialData());
+  });
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+     <div className="container">
+     <Routes>
+         <Route path="/login" exact element={<LoginPage/>}/>
+         <Route path="/" element={<ProtectedRoute><Dashboard/></ProtectedRoute>}/>
+         {/* <Route path="/leaderboard" exact element={<PrivateRoute><Leaderboard/></PrivateRoute>}/>
+         <Route path="/questions/:id" element={<PrivateRoute><PollPage/></PrivateRoute>}/>
+         <Route path="/new" exact element={<PrivateRoute><NewPoll/></PrivateRoute>}/>
+         <Route path="/404" exact element={<Error404/>}/> */}
+     </Routes>
+ </div>
   );
 }
 
-export default App;
+const mapStateToProps = ({authedUser}) => ({
+  loggedIn: authedUser?true:false,
+});
+
+export default connect(mapStateToProps)(App);
+
