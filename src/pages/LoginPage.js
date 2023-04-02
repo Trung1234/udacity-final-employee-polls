@@ -1,5 +1,5 @@
 import {connect} from "react-redux";
-import {Link,Navigate} from "react-router-dom";
+import {Navigate} from "react-router-dom";
 import {useState} from "react";
 import { handleLogin } from "../store/actions/authedUser";
 
@@ -63,7 +63,7 @@ const Login = ({dispatch, loggedIn}) => {
                 <div className="mt-6 text-right">
                     <button type="submit"
                             data-testid="submit"
-                            className="bg-sky-500 hover:bg-sky-700 px-5 py-2.5 text-sm leading-5 rounded-md font-semibold text-white">
+                            class="btn btn-success">
                         Login
                     </button>
                 </div>

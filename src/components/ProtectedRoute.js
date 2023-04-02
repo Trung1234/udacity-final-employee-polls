@@ -1,4 +1,4 @@
-import { Link, Navigate } from "react-router-dom";
+import {  Navigate } from "react-router-dom";
 import {connect} from "react-redux";
 
 const ProtectedRoute = ({children, loggedIn}) => {
