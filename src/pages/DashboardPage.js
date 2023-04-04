@@ -1,51 +1,59 @@
-import {connect} from "react-redux";
+import { connect } from "react-redux";
+import Grid from '@mui/material/Grid';
 import QuestionCard from "../components/QuestionCard";
 
+const Dashboard = ({ authedUser, questions, users }) => {
+  const unanswered = (question) =>
+    !question.optionOne.votes.includes(authedUser.id) &&
+    !question.optionTwo.votes.includes(authedUser.id);
 
-const Dashboard = ({authedUser, questions, users}) => {
-    console.log('authedUser',authedUser);
-    console.log('!!authedUser',!!authedUser);
-    const unanswered = (question) => (!question.optionOne.votes.includes(authedUser.id)
-        && !question.optionTwo.votes.includes(authedUser.id));
+  const answered = (question) =>
+    question.optionOne.votes.includes(authedUser.id) ||
+    question.optionTwo.votes.includes(authedUser.id);
 
-    const answered = (question) => (question.optionOne.votes.includes(authedUser.id)
-        || question.optionTwo.votes.includes(authedUser.id));
+  return (
+    <div>
+      <h1 className="text-3xl font-bold mt-9" data-testid="heading">
+        {authedUser.name}
+      </h1>
 
-    return (
-        <div>
-            <h1 className="text-3xl font-bold mt-9" data-testid="heading">{authedUser.name}</h1>
+      <h2 className="text-2xl font-bold mt-6">New Questions</h2>
+      <Grid
+        container
+        spacing={{ xs: 2, md: 3 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}
+      >
+        {questions.filter(unanswered).map((question)  => (
+          <Grid item xs={2} sm={4} md={4} >
+            <QuestionCard question={question} author={users[question.author]} />
+          </Grid>
+        ))}
+      </Grid>
+      {/* <div className="row rid grid-cols-1 md:grid-cols-2 gap-4">
+        {questions.filter(unanswered).map((question) => (
+          <QuestionCard question={question} author={users[question.author]} />
+        ))}
+      </div> */}
+      {/* <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                
+            </ul> */}
 
-            <h2 className="text-2xl font-bold mt-6">New Questions</h2>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {questions
-                    .filter(unanswered)
-                    .map((question) => (
-                        <li key={question.id}>
-                            <QuestionCard question={question} author={users[question.author]}/>
-                        </li>
-                    ))}
-            </ul>
+      <h2 className="text-2xl font-bold mt-6">Answered Questions</h2>
+      <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {questions.filter(answered).map((question) => (
+          <li key={question.id}>
+            <QuestionCard question={question} author={users[question.author]} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
-            <h2 className="text-2xl font-bold mt-6">Answered Questions</h2>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {questions
-                    .filter(answered)
-                    .map((question) => (
-                        <li key={question.id}>
-                            <QuestionCard question={question} author={users[question.author]}/>
-                        </li>
-                    ))}
-            </ul>
-        </div>
-    );
-}
-
-const mapStateToProps = ({authedUser, questions, users}) => ({
-    authedUser,
-    questions: Object.values(questions).sort(
-        (a, b) => b.timestamp - a.timestamp
-    ),
-    users,
+const mapStateToProps = ({ authedUser, questions, users }) => ({
+  authedUser,
+  questions: Object.values(questions).sort((a, b) => b.timestamp - a.timestamp),
+  users,
 });
 
 export default connect(mapStateToProps)(Dashboard);
