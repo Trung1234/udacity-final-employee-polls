@@ -9,6 +9,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import NotFound from "./components/NotFound";
 import LeaderboardPage from "./pages/LeaderboardPage";
 import NavigationBar from "./components/NavigationBar";
+import PollPage from "./pages/PollPage";
 
 function App({ dispatch, loggedIn }) {
   useEffect(() => {
@@ -34,6 +35,7 @@ function App({ dispatch, loggedIn }) {
          <Route path="/new" exact element={<PrivateRoute><NewPoll/></PrivateRoute>}/>
          <Route path="/404" exact element={<Error404/>}/> */}
          <Route path="/leaderboard" exact element={<ProtectedRoute><LeaderboardPage/></ProtectedRoute>}/>
+         <Route path="/questions/:id" element={<ProtectedRoute><PollPage/></ProtectedRoute>}/>
         <Route path="*" exact element={<NotFound />} />
       </Routes>
     </div>
