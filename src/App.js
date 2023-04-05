@@ -2,7 +2,6 @@ import "./App.css";
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { connect } from "react-redux";
-import { handleInitialData } from "./store/actions/shared";
 import LoginPage from "./pages/LoginPage";
 import Dashboard from "./pages/DashboardPage";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -10,6 +9,7 @@ import NotFound from "./components/NotFound";
 import LeaderboardPage from "./pages/LeaderboardPage";
 import NavigationBar from "./components/NavigationBar";
 import PollPage from "./pages/PollPage";
+import { handleInitialData } from "./services/pollService";
 
 function App({ dispatch, loggedIn }) {
   useEffect(() => {
