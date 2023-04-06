@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import Grid from '@mui/material/Grid';
+import Grid from "@mui/material/Grid";
 import QuestionCard from "../components/QuestionCard";
 
 const Dashboard = ({ authedUser, questions, users }) => {
@@ -23,29 +23,25 @@ const Dashboard = ({ authedUser, questions, users }) => {
         spacing={{ xs: 2, md: 3 }}
         columns={{ xs: 4, sm: 8, md: 12 }}
       >
-        {questions.filter(unanswered).map((question)  => (
-          <Grid item xs={2} sm={4} md={4} >
+        {questions.filter(unanswered).map((question) => (
+          <Grid item xs={2} sm={4} md={4}>
             <QuestionCard question={question} author={users[question.author]} />
           </Grid>
         ))}
       </Grid>
-      {/* <div className="row rid grid-cols-1 md:grid-cols-2 gap-4">
-        {questions.filter(unanswered).map((question) => (
-          <QuestionCard question={question} author={users[question.author]} />
-        ))}
-      </div> */}
-      {/* <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                
-            </ul> */}
 
       <h2 className="text-2xl font-bold mt-6">Answered Questions</h2>
-      <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <Grid
+        container
+        spacing={{ xs: 2, md: 3 }}
+        columns={{ xs: 4, sm: 8, md: 12 }}
+      >
         {questions.filter(answered).map((question) => (
-          <li key={question.id}>
+          <Grid item xs={2} sm={4} md={4}>
             <QuestionCard question={question} author={users[question.author]} />
-          </li>
+          </Grid>
         ))}
-      </ul>
+      </Grid>
     </div>
   );
 };

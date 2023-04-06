@@ -8,8 +8,6 @@ const Login = ({ dispatch, loggedIn }) => {
   const [password, setPassword] = useState("abc321");
 
   if (loggedIn) {
-    // const urlParams = new URLSearchParams(window.location.search);
-    // const redirectUrl = urlParams.get('redirectTo');
     return <Navigate to={"/"} />;
   }
   const handleUsername = (e) => {

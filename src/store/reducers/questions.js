@@ -1,6 +1,5 @@
 import { RECEIVE_QUESTIONS,ADD_QUESTION,ADD_ANSWER_QUESTION} from "../../common/constants";
 
-
 export default function questions(state = {}, action) {
   switch (action.type) {
     case RECEIVE_QUESTIONS:
@@ -23,8 +22,6 @@ export default function questions(state = {}, action) {
             votes: state[action.qid][action.answer].votes.concat(action.author)
           }
         }
-
-
       };
     default:
       return state;

@@ -1,15 +1,15 @@
-import { SET_AUTHED_USER ,LOGOUT_AUTHED_USER} from "../../common/constants";
+import { SET_AUTH_USER ,LOGOUT_AUTH_USER} from "../../common/constants";
 
 export function setAuthedUser(authedUser) {
     return {
-        type: SET_AUTHED_USER,
+        type: SET_AUTH_USER,
         authedUser,
     };
 }
 
 export function logoutAuthedUser() {
     return {
-        type: LOGOUT_AUTHED_USER,
+        type: LOGOUT_AUTH_USER,
     };
 }
 
