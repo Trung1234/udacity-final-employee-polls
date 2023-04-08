@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import NotFound from "../components/NotFound";
 import { handleAddAnswer } from "../store/actions/questions";
 import { Grid } from "@mui/material";
+import { calculatePercentage } from "../services/pollService";
 
 const PollPage = ({ dispatch, authedUser, question, author }) => {
   const navigate = useNavigate();
@@ -27,26 +28,9 @@ const PollPage = ({ dispatch, authedUser, question, author }) => {
     navigate("/");
   };
 
-  const calcPercentage = (option, question) => {
-    const numberVotesTotal =
-      question.optionOne.votes.length + question.optionTwo.votes.length;
-    switch (option) {
-      case "optionOne":
-        return (
-            Math.round((question.optionOne.votes.length / numberVotesTotal) * 100,2) + " %"
-        );
-      case "optionTwo":
-        return (
-            Math.round((question.optionTwo.votes.length / numberVotesTotal) * 100,2) + " %"
-        );
-      default:
-        return "";
-    }
-  };
-
   return (
-    <div>
-      <h1 className="text-3xl font-bold mt-9">Poll by {author.id}</h1>
+    <div className="container">
+      <h1 className="font-bold">Poll by {author.id}</h1>
 
       <div className="container">
         <h2 className="font-bold">Would you rather?</h2>
@@ -60,19 +44,20 @@ const PollPage = ({ dispatch, authedUser, question, author }) => {
                   type="button"
                   class="btn btn-success  btn-block"
                   onClick={handleOptionTwo}
-                >
+                > 
                   Click
                 </button>
               )}
               {hasVoted && (
                 <p className="text-xs">
                   Votes: {question.optionOne.votes.length} (
-                  {calcPercentage("optionOne", question)})
+                  {calculatePercentage("optionOne", question)})
                 </p>
               )}
             </div>
           </Grid>
           <Grid item xs={6}>
+            <div className={hasVotedForOptionTwo ? "chosen" : ""}>
             <p className="font-bold mb-2">{question.optionTwo.text}</p>
             {!hasVoted && (
               <button
@@ -86,9 +71,10 @@ const PollPage = ({ dispatch, authedUser, question, author }) => {
             {hasVoted && (
               <p className="text-xs">
                 Votes: {question.optionTwo.votes.length} (
-                {calcPercentage("optionTwo", question)})
+                {calculatePercentage("optionTwo", question)})
               </p>
             )}
+            </div>         
           </Grid>
         </Grid>
       </div>

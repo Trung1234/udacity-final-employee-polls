@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-const QuestionCard = ({ question, author }) => {
+const QuestionCard = ({ question }) => {
   return (
     <div class="card">
       <div class="card-body">

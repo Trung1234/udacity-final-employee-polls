@@ -13,6 +13,20 @@ export function getInitialData () {
     }))
 }
 
+export function calculatePercentage(option, question)  {
+    const numberVotesTotal =
+      question.optionOne.votes.length + question.optionTwo.votes.length;
+    if(option === "optionOne") {
+        return (
+            Math.round((question.optionOne.votes.length / numberVotesTotal) * 100,2) + " %"
+        );
+    } else {
+        return (
+            Math.round((question.optionTwo.votes.length / numberVotesTotal) * 100,2) + " %"
+        );
+    }
+  };
+
 export function saveQuestion(optionOneText, optionTwoText, author) {
     return _saveQuestion({optionOneText, optionTwoText, author});
 }

@@ -3,6 +3,7 @@ import Grid from "@mui/material/Grid";
 import QuestionCard from "../components/QuestionCard";
 
 const Dashboard = ({ authedUser, questions, users }) => {
+  console.log('questions',questions);
   const unanswered = (question) =>
     !question.optionOne.votes.includes(authedUser.id) &&
     !question.optionTwo.votes.includes(authedUser.id);
@@ -25,7 +26,7 @@ const Dashboard = ({ authedUser, questions, users }) => {
       >
         {questions.filter(unanswered).map((question) => (
           <Grid item xs={2} sm={4} md={4}>
-            <QuestionCard question={question} author={users[question.author]} />
+            <QuestionCard question={question}  />
           </Grid>
         ))}
       </Grid>
@@ -38,7 +39,7 @@ const Dashboard = ({ authedUser, questions, users }) => {
       >
         {questions.filter(answered).map((question) => (
           <Grid item xs={2} sm={4} md={4}>
-            <QuestionCard question={question} author={users[question.author]} />
+            <QuestionCard question={question}  />
           </Grid>
         ))}
       </Grid>

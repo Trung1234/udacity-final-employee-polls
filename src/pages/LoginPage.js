@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { Navigate } from "react-router-dom";
 import { useState } from "react";
+import employee from "../images/employee_surveys.jpg";
 import { handleLogin } from "../store/actions/authedUser";
 
 const Login = ({ dispatch, loggedIn }) => {
@@ -11,13 +12,11 @@ const Login = ({ dispatch, loggedIn }) => {
     return <Navigate to={"/"} />;
   }
   const handleUsername = (e) => {
-    const value = e.target.value;
-    setUsername(value);
+    setUsername(e.target.value);
   };
 
   const handlePassword = (e) => {
-    const value = e.target.value;
-    setPassword(value);
+    setPassword(e.target.value);
   };
 
   const handleSubmit = (e) => {
@@ -29,14 +28,14 @@ const Login = ({ dispatch, loggedIn }) => {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold mt-9" data-testid="login-heading">
-        Login
-      </h1>
+      <div className="container-fluid">
+        <div class="d-flex align-items-center justify-content-center h-100">
+          <img src={employee} className="photo" alt="employee" />
+        </div>
+      </div>
       <form onSubmit={handleSubmit}>
         <div class="form-outline mb-4">
-        <label class="form-label">
-          User name
-          </label>
+          <label class="form-label">User name</label>
           <input
             value={username}
             onChange={handleUsername}
@@ -46,13 +45,10 @@ const Login = ({ dispatch, loggedIn }) => {
             data-testid="username"
             class="form-control"
           />
-          
         </div>
 
         <div class="form-outline mb-4">
-        <label class="form-label">
-            Password
-          </label>
+          <label class="form-label">Password</label>
           <input
             type="password"
             value={password}
@@ -62,13 +58,16 @@ const Login = ({ dispatch, loggedIn }) => {
             data-testid="password"
             class="form-control"
           />
-          
         </div>
 
-        <button  class="btn btn-primary btn-block mb-4" type="submit" data-testid="submit">
+        <button
+          class="btn btn-primary btn-block mb-4"
+          type="submit"
+          data-testid="submit"
+        >
           Sign in
         </button>
-      </form>   
+      </form>
     </div>
   );
 };
