@@ -14,9 +14,9 @@ const LeaderboardPage = ({ users }) => {
           </tr>
         </thead>
         <tbody>
-          {users.map((user, idx) => (
+          {users.map((user) => (
             <tr key={user.id}>
-              <th scope="row">{idx+1}</th>
+              <th scope="row">{<img src={user.avatarURL} className="avatar" alt="avatar" />}</th>
               <td>{user.name}</td>
               <td>{Object.keys(user.answers).length}</td>
               <td>{user.questions.length}</td>
