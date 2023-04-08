@@ -32,9 +32,6 @@ const NewPollPage = ({ dispatch }) => {
             value={firstOption}
             onChange={handleFirstOptionChange}
             type="text"
-            name="username"
-            id="username"
-            data-testid="username"
             class="form-control"
           />
         </div>
@@ -45,9 +42,6 @@ const NewPollPage = ({ dispatch }) => {
             type="text"
             value={secondOption}
             onChange={handleSecondOptionChange}
-            name="password"
-            id="password"
-            data-testid="password"
             class="form-control"
           />
         </div>
