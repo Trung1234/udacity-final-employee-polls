@@ -1,8 +1,9 @@
+const { REJECT } = require("../common/constants");
 const {_saveQuestionAnswer} = require("../data/_DATA");
 describe("_saveQuestionAnswer", () => {
-    it("should return true for correct parameters", async () => {
+    it("should return truthy response for correct parameters", async () => {
         const response = await _saveQuestionAnswer({
-            authedUser: "sarahedo",
+            authedUser: "tylermcginnis",
             qid: "8xf0y6ziyjabvozdd253nd",
             answer: "optionOne"
         });
@@ -10,13 +11,13 @@ describe("_saveQuestionAnswer", () => {
         expect(response).toBeTruthy();
     });
 
-    it("should return error for false parameters", async () => {
+    it("should return error response with false parameters", async () => {
         const response = await _saveQuestionAnswer({
-            authedUser: "sarahedo",
-            qid: undefined,
+            authedUser: "tylermcginnis",
+            qid: null,
             answer: "optionOne"
         }).catch(e => e);
 
-        expect(response).toBe("Please provide authedUser, qid, and answer");
+        expect(response).toBe(REJECT);
     });
 });

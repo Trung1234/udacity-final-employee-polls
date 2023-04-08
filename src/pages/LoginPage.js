@@ -22,6 +22,7 @@ const Login = ({ dispatch, loggedIn }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(handleLogin(username, password));
+    // clear value of input 
     setUsername("");
     setPassword("");
   };
@@ -30,7 +31,7 @@ const Login = ({ dispatch, loggedIn }) => {
     <div>
       <div className="container-fluid">
         <div class="d-flex align-items-center justify-content-center h-100">
-          <img src={employee} className="photo" alt="employee" />
+          <img src={employee} className="photo" alt="employee" id="employee-heading" data-testid="employee-heading"/>
         </div>
       </div>
       <form onSubmit={handleSubmit}>
