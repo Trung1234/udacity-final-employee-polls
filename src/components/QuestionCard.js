@@ -1,11 +1,12 @@
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-const QuestionCard = ({ question }) => {
+const QuestionCard = ({ question ,author}) => {
   return (
     <div class="card">
       <div class="card-body">
         <div>
+        <img className="avatar" src={author?.avatarURL} alt="Author" />
           <div className="text-xl font-medium text-black">
             {question.author}
           </div>

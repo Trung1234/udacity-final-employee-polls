@@ -30,13 +30,13 @@ const Login = ({ dispatch, loggedIn }) => {
   return (
     <div>
       <div className="container-fluid">
-        <div class="d-flex align-items-center justify-content-center h-100">
+        <div className="d-flex align-items-center justify-content-center h-100">
           <img src={employee} className="photo" alt="employee" id="employee-heading" data-testid="employee-heading"/>
         </div>
       </div>
       <form onSubmit={handleSubmit}>
-        <div class="form-outline mb-4">
-          <label class="form-label">User name</label>
+        <div className="form-outline mb-4">
+          <label className="form-label">User name</label>
           <input
             value={username}
             onChange={handleUsername}
@@ -44,12 +44,12 @@ const Login = ({ dispatch, loggedIn }) => {
             name="username"
             id="username"
             data-testid="username"
-            class="form-control"
+            className="form-control"
           />
         </div>
 
-        <div class="form-outline mb-4">
-          <label class="form-label">Password</label>
+        <div className="form-outline mb-4">
+          <label className="form-label">Password</label>
           <input
             type="password"
             value={password}

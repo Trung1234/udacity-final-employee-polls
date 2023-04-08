@@ -31,11 +31,11 @@ describe("LoginPage", () => {
             </Provider>
         );
 
-        const loginHeadingElement = wrapper.getByTestId("employee-heading");
+        const imageElement = wrapper.getByTestId("employee-heading");
         const usernameInputElement = wrapper.getByTestId("username");
         const passwordInputElement = wrapper.getByTestId("password");
         const submitButtonElement = wrapper.getByTestId("submit");
-        expect(loginHeadingElement).toBeInTheDocument();
+        expect(imageElement).toBeInTheDocument();
         expect(usernameInputElement).toBeInTheDocument();
         expect(passwordInputElement).toBeInTheDocument();
         expect(submitButtonElement).toBeInTheDocument();
@@ -45,8 +45,8 @@ describe("LoginPage", () => {
         expect(usernameInputElement.value).toBe("test");
         expect(passwordInputElement.value).toBe("wrongpassword");
         fireEvent.click(submitButtonElement); 
-        // confirm User stays on page
-        expect(loginHeadingElement).toBeInTheDocument();
+        // confirm to stay on page
+        expect(imageElement).toBeInTheDocument();
         expect(usernameInputElement.value).toBe("");
         expect(passwordInputElement.value).toBe("");
     });

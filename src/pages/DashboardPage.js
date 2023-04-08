@@ -26,7 +26,7 @@ const Dashboard = ({ authedUser, questions, users }) => {
       >
         {questions.filter(unanswered).map((question) => (
           <Grid item xs={2} sm={4} md={4}>
-            <QuestionCard question={question}  />
+            <QuestionCard question={question} author={users[question.author]}  />
           </Grid>
         ))}
       </Grid>
@@ -39,7 +39,7 @@ const Dashboard = ({ authedUser, questions, users }) => {
       >
         {questions.filter(answered).map((question) => (
           <Grid item xs={2} sm={4} md={4}>
-            <QuestionCard question={question}  />
+            <QuestionCard question={question}  author={users[question.author]} />
           </Grid>
         ))}
       </Grid>
