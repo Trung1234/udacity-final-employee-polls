@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import NotFound from "../components/NotFound";
 import { handleAddAnswer } from "../store/actions/questions";
 import { Grid } from "@mui/material";
@@ -9,7 +9,7 @@ const PollPage = ({ dispatch, authedUser, question, author }) => {
   const navigate = useNavigate();
 
   if (!authedUser || !question || !author) {
-    return <NotFound />;
+    return <NotFound/>
   }
 
   const hasVotedForOptionOne = question.optionOne.votes.includes(authedUser.id);

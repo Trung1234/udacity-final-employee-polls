@@ -9,7 +9,9 @@ const Login = ({ dispatch, loggedIn }) => {
   const [password, setPassword] = useState("abc321");
 
   if (loggedIn) {
-    return <Navigate to={"/"} />;
+    const urlParams = new URLSearchParams(window.location.search);
+    const redirectUrl = urlParams.get('redirectTo');
+    return <Navigate to={redirectUrl ? redirectUrl : "/"}/>;
   }
   const handleUsername = (e) => {
     setUsername(e.target.value);
@@ -57,12 +59,12 @@ const Login = ({ dispatch, loggedIn }) => {
             name="password"
             id="password"
             data-testid="password"
-            class="form-control"
+            className="form-control"
           />
         </div>
 
         <button
-          class="btn btn-primary btn-block mb-4"
+          className="btn btn-primary btn-block mb-4"
           type="submit"
           data-testid="submit"
         >

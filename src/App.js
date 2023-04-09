@@ -31,7 +31,7 @@ function App({ dispatch, loggedIn }) {
             }
           />
           <Route
-            path="/new"
+            path="/add"
             exact
             element={
               <ProtectedRoute>
@@ -56,7 +56,7 @@ function App({ dispatch, loggedIn }) {
               </ProtectedRoute>
             }
           />
-          <Route path="*" exact element={<NotFound />} />
+          <Route path="/404" exact element={<NotFound />} />
         </Routes>
       </div>
     </div>

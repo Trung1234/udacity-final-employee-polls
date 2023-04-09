@@ -152,7 +152,7 @@ let users = {
     return {
       id: generateUID(),
       timestamp: Date.now(),
-      author: author.id,
+      author,
       optionOne: {
         votes: [],
         text: optionOneText,
@@ -166,20 +166,33 @@ let users = {
   
   export function _saveQuestion (question) {
     return new Promise((resolve, reject) => {
+      const authUser = question.author;
+      const formattedQuestion = formatQuestion(question);
       if (!question.optionOneText || !question.optionTwoText || !question.author) {
         reject("Please provide optionOneText, optionTwoText, and author");
       }
-  
-      const formattedQuestion = formatQuestion(question)
       setTimeout(() => {
-        questions = {
-          ...questions,
-          [formattedQuestion.id]: formattedQuestion
-        }
   
-        resolve(formattedQuestion)
-      }, 1000)
-    })
+        try {
+          questions = {
+            ...questions,
+            [formattedQuestion.id]: formattedQuestion
+          };
+  
+          users = {
+            ...users,
+            [authUser]: {
+              ...users[authUser],
+              questions: users[authUser].questions.concat([formattedQuestion.id])
+            }
+          };
+  
+          resolve(formattedQuestion);
+        } catch (e) {
+          reject("Fail");
+        }
+      }, 1000);
+    });
   }
   
   export function _saveQuestionAnswer ({ authedUser, qid, answer }) {

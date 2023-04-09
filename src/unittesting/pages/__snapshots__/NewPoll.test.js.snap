@@ -1,42 +1,35 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LoginPage should render the loginpage component 1`] = `
+exports[`NewPolPage should render the NewPolPage component 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div>
-        <div
-          class="container-fluid"
+      <div
+        class="container-fluid"
+      >
+        <h1
+          class="font-bold "
         >
-          <div
-            class="d-flex align-items-center justify-content-center h-100"
-          >
-            <img
-              alt="employee"
-              class="photo"
-              data-testid="employee-heading"
-              id="employee-heading"
-              src="employee_surveys.jpg"
-            />
-          </div>
-        </div>
+          New Poll
+        </h1>
         <form>
           <div
             class="form-outline mb-4"
           >
             <label
               class="form-label"
+              data-testid="firstOptionLabel"
+              for="firstOption"
             >
-              User name
+              First Option
             </label>
             <input
               class="form-control"
-              data-testid="username"
-              id="username"
-              name="username"
+              data-testid="firstOption"
+              id="firstOption"
               type="text"
-              value="tylermcginnis"
+              value=""
             />
           </div>
           <div
@@ -44,16 +37,17 @@ Object {
           >
             <label
               class="form-label"
+              data-testid="secondOptionLabel"
+              for="secondOption"
             >
-              Password
+              Second Option
             </label>
             <input
               class="form-control"
-              data-testid="password"
-              id="password"
-              name="password"
-              type="password"
-              value="abc321"
+              data-testid="secondOption"
+              id="secondOption"
+              type="text"
+              value=""
             />
           </div>
           <button
@@ -61,45 +55,38 @@ Object {
             data-testid="submit"
             type="submit"
           >
-            Sign in
+            Submit
           </button>
         </form>
       </div>
     </div>
   </body>,
   "container": <div>
-    <div>
-      <div
-        class="container-fluid"
+    <div
+      class="container-fluid"
+    >
+      <h1
+        class="font-bold "
       >
-        <div
-          class="d-flex align-items-center justify-content-center h-100"
-        >
-          <img
-            alt="employee"
-            class="photo"
-            data-testid="employee-heading"
-            id="employee-heading"
-            src="employee_surveys.jpg"
-          />
-        </div>
-      </div>
+        New Poll
+      </h1>
       <form>
         <div
           class="form-outline mb-4"
         >
           <label
             class="form-label"
+            data-testid="firstOptionLabel"
+            for="firstOption"
           >
-            User name
+            First Option
           </label>
           <input
             class="form-control"
-            data-testid="username"
-            id="username"
-            name="username"
+            data-testid="firstOption"
+            id="firstOption"
             type="text"
-            value="tylermcginnis"
+            value=""
           />
         </div>
         <div
@@ -107,16 +94,17 @@ Object {
         >
           <label
             class="form-label"
+            data-testid="secondOptionLabel"
+            for="secondOption"
           >
-            Password
+            Second Option
           </label>
           <input
             class="form-control"
-            data-testid="password"
-            id="password"
-            name="password"
-            type="password"
-            value="abc321"
+            data-testid="secondOption"
+            id="secondOption"
+            type="text"
+            value=""
           />
         </div>
         <button
@@ -124,7 +112,7 @@ Object {
           data-testid="submit"
           type="submit"
         >
-          Sign in
+          Submit
         </button>
       </form>
     </div>

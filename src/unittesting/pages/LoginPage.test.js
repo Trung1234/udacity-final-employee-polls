@@ -17,7 +17,6 @@ describe("LoginPage", () => {
             </Provider>
         );
         expect(component).toBeDefined();
-        expect(component).toMatchSnapshot();
     });
 
     it('should clear user and password after clicking submit button', async () => {

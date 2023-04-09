@@ -3,7 +3,6 @@ import Grid from "@mui/material/Grid";
 import QuestionCard from "../components/QuestionCard";
 
 const Dashboard = ({ authedUser, questions, users }) => {
-  console.log('questions',questions);
   const unanswered = (question) =>
     !question.optionOne.votes.includes(authedUser.id) &&
     !question.optionTwo.votes.includes(authedUser.id);
@@ -18,7 +17,7 @@ const Dashboard = ({ authedUser, questions, users }) => {
         {authedUser.name}
       </h1>
 
-      <h2 className="text-2xl font-bold mt-6">New Questions</h2>
+      <h2 className="text-2xl font-bold mt-6">Unanswered Questions</h2>
       <Grid
         container
         spacing={{ xs: 2, md: 3 }}

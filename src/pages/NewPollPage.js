@@ -26,30 +26,38 @@ const NewPollPage = ({ dispatch }) => {
     <div className="container-fluid">
       <h1 className="font-bold ">New Poll</h1>
       <form onSubmit={handleSubmit}>
-        <div class="form-outline mb-4">
-          <label class="form-label">First option</label>
+        <div className="form-outline mb-4">
+          <label htmlFor="firstOption"
+                           data-testid="firstOptionLabel" 
+          className="form-label">First Option</label>
           <input
+            id="firstOption"
+            data-testid="firstOption"
             value={firstOption}
             onChange={handleFirstOptionChange}
             type="text"
-            class="form-control"
+            className="form-control"
           />
         </div>
 
-        <div class="form-outline mb-4">
-          <label class="form-label">Second option</label>
+        <div className="form-outline mb-4">
+          <label className="form-label"
+          htmlFor="secondOption"
+          data-testid="secondOptionLabel">Second Option</label>
           <input
             type="text"
+            id="secondOption"
+            data-testid="secondOption"
             value={secondOption}
             onChange={handleSecondOptionChange}
-            class="form-control"
+            className="form-control"
           />
         </div>
 
         <button
-          class="btn btn-primary btn-block mb-4"
+          className="btn btn-primary btn-block mb-4"
           type="submit"
-          data-testid="Submit"
+          data-testid="submit"
         >
           Submit
         </button>
