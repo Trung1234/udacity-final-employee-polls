@@ -1,13 +1,24 @@
 import { connect } from "react-redux";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import NotFound from "../components/NotFound";
 import { handleAddAnswer } from "../store/actions/questions";
 import { Grid } from "@mui/material";
 import { calculatePercentage } from "../services/pollService";
 
-const PollPage = ({ dispatch, authedUser, question, author }) => {
-  const navigate = useNavigate();
-
+const PollPage = ({ dispatch, authedUser, users, questions  }) => {
+  const { id } = useParams();
+  if(!id) {
+    return <NotFound/>
+  }
+  const question = Object.values(questions).find(
+    (question) => question.id === id
+  );
+  if (!question) {
+    return <NotFound/>
+  }
+  const author = Object.values(users).find(
+    (user) => user.id === question.author
+  );
   if (!authedUser || !question || !author) {
     return <NotFound/>
   }
@@ -19,13 +30,11 @@ const PollPage = ({ dispatch, authedUser, question, author }) => {
   const handleOptionOne = (e) => {
     e.preventDefault();
     dispatch(handleAddAnswer(question.id, "optionOne"));
-    navigate("/");
   };
 
   const handleOptionTwo = (e) => {
     e.preventDefault();
     dispatch(handleAddAnswer(question.id, "optionTwo"));
-    navigate("/");
   };
 
   return (
@@ -42,8 +51,8 @@ const PollPage = ({ dispatch, authedUser, question, author }) => {
               {!hasVoted && (
                 <button
                   type="button"
-                  class="btn btn-success  btn-block"
-                  onClick={handleOptionTwo}
+                  className="btn btn-success  btn-block"
+                  onClick={handleOptionOne}
                 > 
                   Click
                 </button>
@@ -62,8 +71,8 @@ const PollPage = ({ dispatch, authedUser, question, author }) => {
             {!hasVoted && (
               <button
                 type="button"
-                class="btn btn-success  btn-block"
-                onClick={handleOptionOne}
+                className="btn btn-success  btn-block"
+                onClick={handleOptionTwo}
               >
                 Click
               </button>
@@ -83,17 +92,7 @@ const PollPage = ({ dispatch, authedUser, question, author }) => {
 };
 
 const mapStateToProps = ({ authedUser, users, questions }) => {
-  try {
-    const question = Object.values(questions).find(
-      (question) => question.id === useParams().id
-    );
-    const author = Object.values(users).find(
-      (user) => user.id === question.author
-    );
-    return { authedUser, question, author };
-  } catch (e) {
-    return <NotFound />;
-  }
+  return { authedUser, users, questions  };
 };
 
 export default connect(mapStateToProps)(PollPage);

@@ -31,6 +31,14 @@ export function saveQuestion(optionOneText, optionTwoText, author) {
     return _saveQuestion({optionOneText, optionTwoText, author});
 }
 
+export function getQuestions() {
+    return (dispatch) => {
+        return getInitialData().then((questions) => {
+            dispatch(receiveQuestions(questions));
+        });
+    };
+}
+
 export function saveQuestionAnswer(authedUserId, qid, answer) {
     return _saveQuestionAnswer({
         authedUser: authedUserId,

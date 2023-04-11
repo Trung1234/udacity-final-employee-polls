@@ -12,13 +12,13 @@ import PollPage from "./pages/PollPage";
 import { handleInitialData } from "./services/pollService";
 import NewPollPage from "./pages/NewPollPage";
 
-function App({ dispatch, loggedIn }) {
+function App({ dispatch }) {
   useEffect(() => {
     dispatch(handleInitialData());
   });
   return (
     <div>
-      {loggedIn && <NavigationBar />}
+      <NavigationBar />
       <div className="container">
         <Routes>
           <Route path="/login" exact element={<LoginPage />} />

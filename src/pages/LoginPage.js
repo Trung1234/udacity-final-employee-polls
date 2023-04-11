@@ -76,6 +76,7 @@ const Login = ({ dispatch, loggedIn }) => {
 };
 
 const mapStateToProps = ({ authedUser }) => ({
+  authedUser: authedUser,
   loggedIn: authedUser ? true : false,
 });
 

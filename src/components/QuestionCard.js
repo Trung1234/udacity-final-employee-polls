@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const QuestionCard = ({ question ,author}) => {
   return (
-    <div class="card">
-      <div class="card-body">
+    <div className="card">
+      <div className="card-body">
         <div>
         <img className="avatar" src={author?.avatarURL} alt="Author" />
           <div className="text-xl font-medium text-black">
@@ -14,7 +14,7 @@ const QuestionCard = ({ question ,author}) => {
             {new Date(question.timestamp).toDateString()}
           </p>
           <Link to={"questions/" + question.id}>
-            <button type="button" class="btn btn-success  btn-block">
+            <button type="button" className="btn btn-success  btn-block">
               Show
             </button>
           </Link>

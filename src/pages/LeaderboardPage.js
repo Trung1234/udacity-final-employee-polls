@@ -4,8 +4,8 @@ const LeaderboardPage = ({ users }) => {
   return (
     <div>
       <h1 className="text-3xl font-bold mt-9">Leaderboard</h1>
-      <table class="table">
-        <thead ad class="thead-dark">
+      <table className="table">
+        <thead  className="thead-dark">
           <tr>
             <th scope="col">#</th>
             <th scope="col">User name</th>
